@@ -44,11 +44,7 @@ brew install supabase/tap/supabase
 supabase start
 ```
 
-### 4. Install Ollama (for local models)
-
-Follow the instructions [here](https://github.com/jmorganca/ollama#macos)
-
-### 5. Fill in secrets
+### 4. Fill in secrets
 
 1. .env
 
@@ -71,7 +67,7 @@ In the 1st migration file `20240108234540_setup.sql` you will need to replace 2 
 
 You will also need to to fill in the values for project_url
 
-### 6. Run app locally
+### 5. Run app locally
 
 ```bash
 npm run chat

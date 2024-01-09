@@ -35,7 +35,7 @@ export const ModelSelect: FC<ModelSelectProps> = ({
 
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState("")
-  const [tab, setTab] = useState<"hosted" | "local">("hosted")
+  const [tab, setTab] = useState<"hosted">("hosted")
 
   useEffect(() => {
     if (isOpen) {
@@ -126,7 +126,6 @@ export const ModelSelect: FC<ModelSelectProps> = ({
         <Tabs value={tab} onValueChange={(value: any) => setTab(value)}>
           <TabsList defaultValue="hosted" className="grid grid-cols-2">
             <TabsTrigger value="hosted">Hosted</TabsTrigger>
-            <TabsTrigger value="local">Local</TabsTrigger>
           </TabsList>
         </Tabs>
 
@@ -141,10 +140,6 @@ export const ModelSelect: FC<ModelSelectProps> = ({
         <div className="max-h-[300px] overflow-auto">
           {Object.entries(groupedModels).map(([provider, models]) => {
             const filteredModels = models
-              .filter(model => {
-                if (tab === "hosted") return model.provider !== "ollama"
-                if (tab === "local") return model.provider === "ollama"
-              })
               .filter(model =>
                 model.modelName.toLowerCase().includes(search.toLowerCase())
               )
